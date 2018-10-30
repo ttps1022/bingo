@@ -4,11 +4,19 @@
 	<title>Bingo_get</title>
 </head>
 <body>
-	<h1>TEST4</h1>
-	<iframe src="http://www.taiwanlottery.com.tw/Lotto/BINGOBINGO/drawing.aspx"></iframe>
+    <form method="post" action="http://www.taiwanlottery.com.tw/Lotto/BINGOBINGO/drawing.aspx" id="form1">
+	<div class="aspNetHidden">
+	<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+	<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+	<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+	<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" 	
+    </from>
+		
+	<iframe id='test'></iframe>
 </body>
 	
 <script>
+	/*
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(result) {
 		if (this.readyState == 4 && this.status == 200) {
@@ -20,6 +28,7 @@
 	};
 	xhttp.open("POST", "http://www.taiwanlottery.com.tw/Lotto/BINGOBINGO/drawing.aspx", true);
 	xhttp.send(); 
+	*/
 </script> 
 
 </html>
