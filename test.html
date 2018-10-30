@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-	
 <head>
 	<title></title>
 </head>
 <body>
-	<h1>TEST2</h1>
+<h1>TEST2</h1>	
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function(result) {
+	if (this.readyState == 4 && this.status == 200) {
+		var _html = this.responseText;
+		var _temp = _html.substring(_html.indexOf('<table class="tableFull">'), _html.length);
+		var _table = _temp.substring(0, _temp.indexOf('<br />'));
+		document.write(_table);
+	}
+};
+xhttp.open("POST", "http://www.taiwanlottery.com.tw/Lotto/BINGOBINGO/drawing.aspx", true);
+xhttp.send(); < /script>  < /body > < /html>
+</script> 
 </body>
-	
-	<script>
-		alert('test');
-	</script>
 </html>
