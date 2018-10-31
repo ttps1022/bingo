@@ -18,18 +18,57 @@
 </body>
 	
 <script>
-	var xhttp = new XMLHttpRequest();
+	
+
+function setBingo(){	
+	var _h1  = '<h1></h1>';
+	var _div  = '<div></div>';
+	var _button = '<button onclick="getBingo()">更新</button>';
+	var _span   = '<span id="clock"></span>';
+	document.getElementsByTagName('body')[0].innerHTML = _h1 + _button + _span + _div;    
+	showtime();
+	getBingo();
+}
+
+function showtime(){	
+var now,hours,minutes,seconds,timeValue;
+	now = new Date();
+	hours = now.getHours();
+	minutes = now.getMinutes();
+	seconds = now.getSeconds();
+	timeValue = (hours >= 12) ? "下午 " : "上午 ";
+	timeValue += ((hours > 12) ? hours - 12 : hours) + " 點";
+	timeValue += ((minutes < 10) ? " 0" : " ") + minutes + " 分";
+	timeValue += ((seconds < 10) ? " 0" : " ") + seconds + " 秒";
+	clock.innerHTML = timeValue;
+	setTimeout("showtime()",1000);
+}
+
+function getBingo(){
+
+ var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(result) {
 		if (this.readyState == 4 && this.status == 200) {
 			var _html = this.responseText;
 			var _temp = _html.substring(_html.indexOf('<table class="tableFull">'), _html.length);
-			var _table = _temp.substring(0, _temp.indexOf('<br />'));
-			document.getElementsByTagName('body')[0].innerHTML = ' '
-			document.getElementsByTagName('body')[0].innerHTML = _table;
+			var _table= _temp.substring(0, _temp.indexOf('<br />'));
+			document.getElementsByTagName('div')[0].innerHTML = _table;
+			
+			var toDay = new Date();
+			var _time = 'getDataTime:' + toDay.getHours() + ':' + toDay.getMinutes() + ':' + toDay.getSeconds();			
+			document.getElementsByTagName('h1')[0].innerHTML  = _time;
+			
+			
 		}
 	};
 	xhttp.open("POST", "http://www.taiwanlottery.com.tw/Lotto/BINGOBINGO/drawing.aspx?new=true", true);
 	xhttp.send(); 
+
+}
+
+
+
+
 </script> 
 
 </html>
